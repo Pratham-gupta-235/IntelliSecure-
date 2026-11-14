@@ -132,45 +132,4 @@ Notes:
 
 If verification returns fraud, the UI offers a **See Why** action which shows model details saved in the user document.
 
----
-
-## Development notes & debugging
-
-- If the homepage Verify flow returns `Invalid UPI ID`:
-	- Ensure the recipient UPI exists in Firestore `users` collection with the same `upiId` string.
-	- Check the console logs in the browser for debug messages printed during verification.
-- If the prediction call fails:
-	- Confirm the backend prediction server is running and the URL/port match the frontend fetch URL.
-	- Check backend logs for errors during prediction.
-- Auth issues:
-	- Make sure Google Sign-In is enabled in Firebase and OAuth redirect domains include your local development host.
-
----
-
-## Testing quick checklist
-
-- Sign in as Personal account: Homepage → Sign in → choose Personal → should land on `/dashboard`.
-- Sign in as Business account: Homepage → Sign in → choose Business → should land on `/business-dashboard`.
-- Verify UPI: Enter an existing user's `upiId` and click Verify → expect a result (Verified/Fraudulent).
-- Create a transaction (via TransactionSimulation component) and check Firestore `transactions` collection to confirm storage.
-
----
-
-## Contributing
-
-PRs are welcome. Small suggestions:
-- Keep UI styling consistent (Tailwind and component lib used: shadcn/ui).
-- Add tests for important flows if you add backend logic.
-
-## License
-
-Add a license file to the repository (e.g. MIT) or update the following line with your chosen license.
-
----
-
-If you want, I can also:
-- Add a short `requirements.txt` or `package.json` snippets to this README for easier installs.
-- Verify and update all frontend fetch URLs to match the backend port you prefer (5000 vs 8000).
-
-Enjoy exploring IntelliSecure! If you want I can open a quick PR to update any ports or create a Docker dev compose for both services.
 
